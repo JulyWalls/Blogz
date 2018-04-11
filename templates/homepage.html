@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blogs Homepage</title>
+    </head>
+    <body>
+        <form method='post'>
+        <label id="blog_title">
+            Title:
+            <br>
+            <input type="text" name="title" id="blog_title">
+        </label>
+        <br>
+        <label id="blog_content">
+            Content:
+            <br>
+            <textarea name="content" id="blog_content"></textarea>
+        </label>
+        <br>
+        <input type="submit" value="Add New Blog!">
+        </form>
+        {% for blog in blogs %}
+        <h1>{{blog.title}}</h1>
+        <p>{{blog.body}}</p>
+        <hr>
+        {% endfor %}
+    </body>
+</html>

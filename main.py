@@ -27,11 +27,11 @@ def index():
         title_error = ""
         content_error = ""
 
-        if not blog_title or blog_title == "":
+        if not blog_title or blog_title == " ":
             title_error = "Add a title to your blog"
             blog_title = ""
 
-        if  not blog_content or blog_content == "":
+        if  not blog_content or blog_content == " ":
             content_error = "Add some content to your blog"
             blog_content = ""
 

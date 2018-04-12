@@ -20,6 +20,20 @@ class Blog(db.Model):
 
 @app.route('/blog', methods=['POST', 'GET'])
 def index():
+    blog_id = request.args.get('id')
+
+    if request.method == 'GET':
+        if not blog_id:
+            blogs = Blog.query.all()
+            tab_title = "Homepage"
+            return render_template('homepage.html', blogs=blogs, tab_title=tab_title)
+        else:
+            blogs = Blog.query.get(blog_id)
+            return render_template('blog.html', blogs=blogs) 
+
+@app.route('/newpost', methods=['POST', 'GET'])
+def add_blog():
+
     if request.method == 'POST':
         blog_title = request.form['title']
         blog_content = request.form['content']
@@ -39,19 +53,12 @@ def index():
             new_blog = Blog(blog_title, blog_content)
             db.session.add(new_blog)
             db.session.commit()
+            return redirect('/blog')
         else:
             return render_template('add-blog-form.html', title_error=title_error, content_error=content_error,
             blog_content=blog_content, blog_title=blog_title)
 
 
-    blogs = Blog.query.all()
-    tab_title = "Homepage"
-
-
-    return render_template('homepage.html', blogs=blogs, tab_title=tab_title)
-
-@app.route('/newpost', methods=['POST', 'GET'])
-def add_blog():
     tab_title = "Add New Blog"
     return render_template('add-blog-form.html', tab_title=tab_title)
 

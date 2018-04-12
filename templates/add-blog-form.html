@@ -4,14 +4,20 @@
 <form action="/blog" method='post'>
         <label id="blog_title">
             Title:
+            {% if title_error %}
+                <span class="error">{{title_error}}</span>
+            {% endif %}
             <br>
-            <input type="text" name="title" id="blog_title">
+            <input type="text" name="title" id="blog_title" value="{{blog_title}}">
         </label>
         <br>
         <label id="blog_content">
             Content:
+            {% if content_error %}
+                <span class="error">{{content_error}}</span>
+            {% endif %}
             <br>
-            <textarea name="content" id="blog_content"></textarea>
+            <textarea name="content" id="blog_content" value="{{blog_content}}"></textarea>
         </label>
         <br>
         <input type="submit" value="Add New Blog!">

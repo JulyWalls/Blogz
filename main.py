@@ -24,11 +24,25 @@ def index():
         blog_title = request.form['title']
         blog_content = request.form['content']
 
-        #validation code will go here
+        title_error = ""
+        content_error = ""
 
-        new_blog = Blog(blog_title, blog_content)
-        db.session.add(new_blog)
-        db.session.commit()
+        if not blog_title or blog_title == "":
+            title_error = "Add a title to your blog"
+            blog_title = ""
+
+        if  not blog_content or blog_content == "":
+            content_error = "Add some content to your blog"
+            blog_content = ""
+
+        if not title_error and not content_error:
+            new_blog = Blog(blog_title, blog_content)
+            db.session.add(new_blog)
+            db.session.commit()
+        else:
+            return render_template('add-blog-form.html', title_error=title_error, content_error=content_error,
+            blog_content=blog_content, blog_title=blog_title)
+
 
     blogs = Blog.query.all()
     tab_title = "Homepage"

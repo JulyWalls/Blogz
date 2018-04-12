@@ -53,7 +53,9 @@ def add_blog():
             new_blog = Blog(blog_title, blog_content)
             db.session.add(new_blog)
             db.session.commit()
-            return redirect('/blog')
+            blogs = Blog.query.get(new_blog.id)
+
+            return render_template('blog.html', blogs=blogs)
         else:
             return render_template('add-blog-form.html', title_error=title_error, content_error=content_error,
             blog_content=blog_content, blog_title=blog_title)

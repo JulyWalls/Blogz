@@ -1,0 +1,39 @@
+.error {
+    color: red;
+}
+
+.header {
+    font-size: 50px;
+    background-image: url("images/notebookpaper.jpg");
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+form {
+    text-align: center;
+}
+
+nav {
+    background: rgb(29, 75, 77);
+    padding: 5px;
+}
+
+nav a {
+    color: white;
+    text-decoration-line: none; 
+}
+
+.addblog {
+    float:right;
+    margin-right: 200px;
+}
+
+.mainlink {
+    margin-left: 200px;
+}

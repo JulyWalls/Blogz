@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="{{ url_for('static',filename='styles/style.css') }}" rel="stylesheet" type="text/css">
         <title>{{tab_title}}</title>
-        <style>
-            .error {
-                color: red;
-            }
-        </style>
     </head>
     <body>
+        <div>
         <nav>
-            <a href="blog">Main Blog Page</a>|
-            <a href="/newpost">Add New Blog</a>
+            <a class="mainlink" href="blog">Main Blog Page</a>
+            <a class="addblog" href="/newpost">Add New Blog</a>
         </nav>
+        </div>
+        <div class="background">
+        <h1 class="header"><b>BUILD A BLOG</b></h1>
 
         {% block content %}
         {% endblock %}
-
+        </div>
     </body>
 </html>

@@ -2,7 +2,7 @@
 {% block content %}
         {% for blog in blogs %}
         
-        <a href="/blog?id={{blog.id}} "><h1 class="blogtitle">{{blog.title}}</h1></a>
+        <a class="homepage-title" href="/blog?id={{blog.id}} "><h1 class="blogtitle">{{blog.title}}</h1></a>
         <p class="blogbody">{{blog.body}}</p>
         <hr>
         

@@ -4,7 +4,9 @@
 
 .header {
     font-size: 50px;
-    background-image: url("/images/notes.jpg");
+    margin-top: 0px;
+    padding-top: 20px;
+    font-family: 'Black Han Sans', sans-serif;
 }
 
 h1 {
@@ -17,11 +19,13 @@ p {
 
 form {
     text-align: center;
+    padding-bottom: 100%;
 }
 
 nav {
     background: rgb(29, 75, 77);
-    padding: 5px;
+    padding: 20px;
+    border: black solid 2px;
 }
 
 nav a {
@@ -45,5 +49,41 @@ nav a {
     color: white;
     width: 400px;
     margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    font-family: 'Black Han Sans', sans-serif;
 
+}
+
+.homepage-title {
+    text-decoration-line: none;
+}
+
+.blogtitle:hover {
+    color:whitesmoke;
+    padding: 10px;
+    background-color: gray;
+    width: 400px;
+    
+}
+
+.blogbody {
+    width: 70%;
+    margin: 10px auto;
+    margin-bottom: 20px;
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+}
+
+.background {
+    background-color: rgb(24, 122, 122);
+}
+
+label {
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+}
+
+.cover-all {
+    padding-bottom: 200px;
 }

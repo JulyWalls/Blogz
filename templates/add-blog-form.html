@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="cover-all">
 <form action="/newpost" method='post'>
         <label id="blog_title">
             Title:
@@ -17,9 +18,10 @@
                 <span class="error">{{content_error}}</span>
             {% endif %}
             <br>
-            <textarea name="content" id="blog_content" value="{{blog_content}}"></textarea>
+            <textarea rows="20" cols="70" name="content" id="blog_content" value="{{blog_content}}"></textarea>
         </label>
         <br>
         <input type="submit" value="Add New Blog!">
 </form>
+</div>
 {% endblock %}

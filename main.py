@@ -1,10 +1,13 @@
-from flask import Flask, request, redirect, render_template
+from flask import Flask, request, redirect, render_template, session, flash
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://build-a-blog:bloggers@localhost:8889/build-a-blog'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://blogz:bloggers@localhost:8889/blogz'
 app.config['SQLALCHEMY_ECHO'] = True
+app.secret_key = 'y337kGcys&zP3B'
+
+
 db = SQLAlchemy(app)
 
 class Blog(db.Model):
@@ -12,10 +15,22 @@ class Blog(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(120))
     body = db.Column(db.String(500))
+    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    def __init__(self, title, body):
+    def __init__(self, title, body, owner):
         self.title = title
         self.body = body
+        self.owner = owner
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String(120))
+    password = db.Column(db.String(120))
+    blog = db.relationship('Blog', backref='owner')
+
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
 
 
 @app.route('/blog', methods=['POST', 'GET'])
@@ -23,7 +38,7 @@ def index():
     blog_id = request.args.get('id')
 
     if request.method == 'GET':
-        if not blog_id:
+        if not blog_id: 
             blogs = Blog.query.all()
             tab_title = "Homepage"
             return render_template('homepage.html', blogs=blogs, tab_title=tab_title)

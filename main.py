@@ -79,6 +79,14 @@ def add_blog():
     tab_title = "Add New Blog"
     return render_template('add-blog-form.html', tab_title=tab_title)
 
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    return render_template('login.html')
+
+@app.route('/signup', methods=['POST', 'GET'])
+def signup():
+    return render_template('signup.html')
+
 
 
 if __name__=='__main__':

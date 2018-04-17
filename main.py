@@ -33,18 +33,24 @@ class User(db.Model):
         self.password = password
 
 
+@app.before_request
+def require_login():
+    allowed_routes = ['index', 'signup', 'login', 'home']
+    if request.endpoint not in allowed_routes and 'username' not in session:
+        return redirect('/login')
+
 @app.route('/blog', methods=['POST', 'GET'])
 def index():
     blog_id = request.args.get('id')
 
     if request.method == 'GET':
-        if not blog_id: 
+        if blog_id:
+            blogs = Blog.query.get(blog_id)
+            return  render_template('blog.html', blogs=blogs)
+        else:
             blogs = Blog.query.all()
             tab_title = "Homepage"
             return render_template('homepage.html', blogs=blogs, tab_title=tab_title)
-        else:
-            blogs = Blog.query.get(blog_id)
-            return render_template('blog.html', blogs=blogs) 
     
 
 @app.route('/newpost', methods=['POST', 'GET'])
@@ -53,6 +59,7 @@ def add_blog():
     if request.method == 'POST':
         blog_title = request.form['title']
         blog_content = request.form['content']
+        owner = User.query.filter_by(username=session['username']).first()
 
         title_error = ""
         content_error = ""
@@ -66,7 +73,7 @@ def add_blog():
             blog_content = ""
 
         if not title_error and not content_error:
-            new_blog = Blog(blog_title, blog_content)
+            new_blog = Blog(blog_title, blog_content, owner)
             db.session.add(new_blog)
             db.session.commit()
             blogs = Blog.query.get(new_blog.id)
@@ -91,6 +98,7 @@ def login():
             # TODO - "remember" that the user has logged in
             session['username'] = username
             flash("logged in")
+            print(session)
             return redirect('/newpost')
 
         else:
@@ -141,7 +149,7 @@ def signup():
 @app.route('/logout')
 def logout():
     del session['username']
-    redirect('/blog')
+    return redirect('/blog')
 
 
 

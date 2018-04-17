@@ -4,7 +4,7 @@
 {% for posts in blogs %}
 <h2><a href="/blog?id={{posts.id}}">{{posts.title}}</a></h2>
 <p>{{posts.body}}</p>
-<p>written by <a href="/blog?user={{user.id}}">{{user.username}}</a></p>
+<p class='author'>written by <a href="/blog?user={{user.id}}">{{user.username}}</a></p>
 <hr>
 {% endfor %}
 {% endblock %}

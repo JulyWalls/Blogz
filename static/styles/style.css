@@ -1,11 +1,11 @@
 .error {
-    color: red;
+    color: black;
 }
 
 .header {
     font-size: 50px;
     margin-top: 0px;
-    padding-top: 20px;
+    padding-top: 20px; 
     font-family: 'Black Han Sans', sans-serif;
 }
 
@@ -84,6 +84,6 @@ label {
     font-size: 20px;
 }
 
-.cover-all {
-    padding-bottom: 200px;
+.links {
+    padding: 0px 10px;
 }

@@ -81,10 +81,60 @@ def add_blog():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        user = User.query.filter_by(username=username).first()
+        if user and user.password == password:
+            # TODO - "remember" that the user has logged in
+            session['username'] = username
+            flash("logged in")
+            return redirect('/newpost')
+
+        else:
+            flash("user password incorrect, or user does not exist", 'error')
+    return render_template('login.html')
+
+
     return render_template('login.html')
 
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        verify = request.form['verify']
+
+        # TODO - validate data
+
+        existing_user = User.query.filter_by(username=username).first()
+
+        if existing_user:
+            flash('User already exists', 'error')
+            return redirect('/signup')
+
+        if password != verify:
+            flash('Passwords do not match', 'error')
+            return redirect('/signup')
+
+        if username == "" or password == "" or verify == "":
+            flash('Some fields are invalid', 'error')
+            return redirect('/signup')
+
+        if len(username) < 3 or len(password) < 3:
+            flash('Username or password has to be longer than three characters', 'error')
+            return redirect('/signup')
+
+
+
+        if not existing_user and password == verify:
+            new_user = User(username, password)
+            db.session.add(new_user)
+            db.session.commit()
+            session['username'] = username
+            return redirect('/newpost')
+
     return render_template('signup.html')
 
 

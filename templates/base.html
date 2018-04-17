@@ -7,11 +7,21 @@
     </head>
     <body>
         <nav>
-            <a class="mainlink" href="blog">Main Blog Page</a>
-            <a class="addblog" href="/newpost">Add New Blog</a>
+            <a class='links' href="blog">Main Blog Page</a>
+            <a class='links' href="/newpost">Add New Blog</a>
+            <a class='links' href="/login">Login</a>
+            <a class='links' href="/signup">Signup</a>
         </nav>
         <div class="background">
-        <h1 class="header"><b>BUILD A BLOG</b></h1>
+        <h1 class="header"><b>BLOGZ</b></h1>
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        <ul>
+        {% for category,message in messages %}
+        <li class="{{category}}">{{message}}</li>
+        {% endfor %}
+        </ul>
+        {% endwith %}
 
         {% block content %}
         {% endblock %}

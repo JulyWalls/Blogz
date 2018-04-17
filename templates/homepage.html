@@ -4,6 +4,7 @@
         
         <a class="homepage-title" href="/blog?id={{blog.id}} "><h1 class="blogtitle">{{blog.title}}</h1></a>
         <p class="blogbody">{{blog.body}}</p>
+        <p>written by <a href='/blog?user={{blog.owner.id}}'>{{blog.owner.username}}</a></p>
         <hr>
         
         {% endfor %} 

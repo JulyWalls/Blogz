@@ -39,14 +39,25 @@ def require_login():
     if request.endpoint not in allowed_routes and 'username' not in session:
         return redirect('/login')
 
+
+@app.route('/', methods=['POST', 'GET'])
+def home():
+    usernames = User.query.all()
+    return render_template('index.html', usernames=usernames)
+
 @app.route('/blog', methods=['POST', 'GET'])
 def index():
     blog_id = request.args.get('id')
+    user_id = request.args.get('user')
 
     if request.method == 'GET':
         if blog_id:
             blogs = Blog.query.get(blog_id)
             return  render_template('blog.html', blogs=blogs)
+        if user_id:
+            user = User.query.get(user_id)
+            blogs = Blog.query.filter_by(owner_id=user_id).all()
+            return render_template('singleuser.html', user=user, blogs=blogs)
         else:
             blogs = Blog.query.all()
             tab_title = "Homepage"
@@ -150,6 +161,7 @@ def signup():
 def logout():
     del session['username']
     return redirect('/blog')
+
 
 
 

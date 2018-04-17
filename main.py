@@ -45,6 +45,7 @@ def index():
         else:
             blogs = Blog.query.get(blog_id)
             return render_template('blog.html', blogs=blogs) 
+    
 
 @app.route('/newpost', methods=['POST', 'GET'])
 def add_blog():
@@ -136,6 +137,11 @@ def signup():
             return redirect('/newpost')
 
     return render_template('signup.html')
+
+@app.route('/logout')
+def logout():
+    del session['username']
+    redirect('/blog')
 
 
 

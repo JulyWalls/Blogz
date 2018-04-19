@@ -3,10 +3,10 @@
 }
 
 .header {
-    font-size: 50px;
+    font-size: 70px;
     margin-top: 0px;
     padding-top: 20px; 
-    font-family: 'Black Han Sans', sans-serif;
+    font-family: 'Fredoka One', cursive;
 }
 
 h1 {
@@ -76,7 +76,7 @@ nav a {
 }
 
 .background {
-    background-color: rgb(24, 122, 122);
+    background-color: #5F9EA0;
 }
 
 label {
@@ -100,3 +100,4 @@ h2 {
 .author {
     font-style: italic;
 }
+

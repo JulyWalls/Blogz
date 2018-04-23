@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .error {
     color: black;
 }
@@ -15,6 +20,10 @@ h1 {
 
 p {
     text-align: center;
+    width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    line-height: 1.5;
 }
 
 form {
@@ -26,11 +35,17 @@ nav {
     background: rgb(29, 75, 77);
     padding: 20px;
     border: black solid 2px;
+    opacity: 0.8;
 }
 
 nav a {
     color: white;
     text-decoration-line: none; 
+}
+
+nav a:hover {
+    background-color: gray;
+    padding: 20px;
 }
 
 .addblog {
@@ -52,6 +67,7 @@ nav a {
     margin-bottom: 20px;
     margin-top: 40px;
     font-family: 'Black Han Sans', sans-serif;
+    opacity: 0.8;
 
 }
 
@@ -76,13 +92,13 @@ nav a {
 }
 
 .background {
-    background-color: rgb(24, 122, 122);
+    background: url('/static/blogz.jpg');
 }
 
 label {
     font-family: 'Crimson Text', serif;
     font-size: 20px;
-}
+} 
 
 .links {
     padding: 0px 10px;
@@ -99,4 +115,26 @@ h2 {
 
 .author {
     font-style: italic;
+}
+
+ul li {
+    padding: 10px;
+    margin: 0 auto;
+    text-align: center;
+    list-style: none; 
+}
+
+ul {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.user {
+    text-decoration: none;
+    font-weight: 600; 
+    color: white;
+}
+
+.user:hover {
+    color: purple;
 }

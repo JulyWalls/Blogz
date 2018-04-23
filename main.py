@@ -135,8 +135,8 @@ def signup():
             return redirect('/signup')
 
         if password != verify:
-            flash('Passwords do not match', 'error')
-            return redirect('/signup')
+            password_error = 'Passwords do not match'
+            return render_template('signup.html', password_error=password_error, username=username)
 
         if username == "" or password == "" or verify == "":
             flash('Some fields are invalid', 'error')

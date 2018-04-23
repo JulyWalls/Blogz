@@ -143,9 +143,9 @@ ul {
     width: 350px;
     height: 150px;
     margin: 0 auto;
-    background-color: powderblue;
+    background-color: white;
     border-radius: 5%;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 table {
@@ -153,4 +153,9 @@ table {
     padding: 20px;
     padding-right: 50px
 
+}
+
+.button {
+    background: gray;
+    width: 50px;
 }

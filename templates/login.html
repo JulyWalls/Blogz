@@ -3,21 +3,23 @@
 {% block content %}
 <h1>Log in to Blogz!</h1>
 <p>If you don't have an account, you may <a href="/signup">Signup</a> for one</p>
-<form action="/login" method="post">
-    <table> 
-        <tr>
-            <td><label for="username">Username</label></td>
-            <td>
-                <input name="username" type="text" placeholder="Enter username">
-            </td>
-        </tr>
-        <tr>
-            <td><label for="password">Password</label></td>
-            <td>
-                <input name="password" type="password" placeholder="Enter password">
-            </td>
-        </tr>
-    </table>
-    <input type="submit" value="Login">
-</form>
+<div class="login-box">
+    <form action="/login" method="post">
+        <table> 
+            <tr>
+                <td><label for="username">Username</label></td>
+                <td>
+                    <input name="username" type="text" placeholder="Enter username">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="password">Password</label></td>
+                <td>
+                    <input name="password" type="password" placeholder="Enter password">
+                </td>
+            </tr>
+        </table>
+        <input class="button" type="submit" value="Login">
+    </form>
+</div>
 {% endblock %} 

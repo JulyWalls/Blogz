@@ -28,7 +28,7 @@ p {
 
 form {
     text-align: center;
-    padding-bottom: 100%;
+    margin: 0 auto;
 }
 
 nav {
@@ -137,4 +137,26 @@ ul {
 
 .user:hover {
     color: purple;
+}
+
+.login-box {
+    width: 350px;
+    height: 150px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 5%;
+    opacity: 0.9;
+}
+
+table {
+    margin: 10 20px;
+    padding: 20px;
+    padding-right: 50px
+
+}
+
+.button {
+    background: gray;
+    width: 50px;
+    font-weight: 700;
 }

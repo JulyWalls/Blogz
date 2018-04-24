@@ -158,4 +158,5 @@ table {
 .button {
     background: gray;
     width: 50px;
+    font-weight: 700;
 }
